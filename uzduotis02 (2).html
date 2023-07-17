@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <picture>
+        <source
+         media="(min-width: 800px)"
+         srcset="/images/naras.png 360w,
+                 /images/naras.png 720w,
+                 /images/naras.png 1440w"
+         sizes="33.3vw">
+        <source
+         srcset="/images/naras.png 2x,
+                 /images/naras.png 1x">
+        <img src="/images/naras.png"
+       </picture>
+    <h1>VILNIUSCODINGSCHOOL</h1>
+    <h2>About</h2>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+    standart dummy text ever since the 1500s, when an unknow printer took a galley of type and scrambled it to make a
+    type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+    remaining essentially unchanged.
+    <h2>Projects</h2>
+    <ul>
+        <li>Featured</li>
+        <ul>
+            <li><a href="https:/www.lrs.lt">Project 1</a>
+            <li><a href="https:/www.lrs.lt">Project 2</a>
+        </ul>
+        <li>Latest</li>
+        <ul>
+            <li><a href="https:/www.lrs.lt">Project 3</a>
+            <li><a href="https:/www.lrs.lt">Project 4</a>
+        </ul>
+    </ul>
+    <h2>Festival Schedule</h2>
+    <table>
+        <table class=MsoTableGrid border=2 cellspacing=0 cellpadding=0 <tr>
+            <td>Time</td>
+            <td>Topic</td>
+            </tr>
+            <tr>
+                <td>9.00-12.00</td>
+                <td>Registration</td>
+            </tr>
+            <tr>
+                <td>12.00-14.00</td>
+                <td>Keynote</td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>Sign up!</h2>
+        <form action="/subscribe" method="post">
+            <legend>Name</legend>
+            <input type="text" name="name">
+            <legend>Email</legend>
+            <input type="email" name="email">
+            <br><label>Location</label><br>
+            <input list="countries" placeholder="Type a city">
+
+            <datalist id="countries">
+                <option value="Vilnius">
+                <option value="Kaunas">
+                <option value="Klaipėda">
+                <option value="Kėdainiai">
+                <option value="Trakai">
+                <option value="Biržai">
+                <option value="Kernavė">
+            </datalist>
+            <br>Gender:</label>
+                  <label>
+                    <input type="radio" name="title" value="mrs">
+                    Female
+                  </label>
+                  <label>
+                    <input type="radio" name="title" value="mr">
+                    Male
+                  </label>
+                </p>
+              <br>
+              </label>
+              <textarea placeholder="Your message"></textarea><br>
+            <button>Sign up</button>
+        </form>
+</body>
+
+</html>

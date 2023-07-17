@@ -1,0 +1,67 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Philosopher', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.site-header {
+    background-color: rgb(9, 134, 65);
+    position: fixed;
+    width: 100%;
+    display: block;
+}
+
+
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+
+.flex-container {
+    display: flex;
+}
+
+
+.site-header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main-nav li {
+    list-style: none;
+}
+
+
+.main-nav a {
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 10px 17px;
+}
+
+
+.main-nav a:hover,
+.main-nav a:active {
+    background-color: rgb(9, 134, 65);
+    border-radius: 5px;
+}
+
+.mobile-nav {
+    display: none;
+}

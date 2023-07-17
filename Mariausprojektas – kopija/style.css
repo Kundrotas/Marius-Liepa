@@ -1,0 +1,104 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Philosopher', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.navbar {
+    background-color: rgb(9, 134, 65);
+    position: fixed;
+    width: 100%;
+    display: block;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.dropdown {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.a {
+    list-style: none;
+}
+
+.navbar .navbar-expand-md .navbar-light .bg-light {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 10px 17px;
+}
+
+.dropbtn {
+    background-color: rgb(9, 134, 65);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown-content a:hover {
+    background-color: rgb(175, 12, 26);
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(175, 12, 26);
+}
+div.scrollmenu {
+    
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  

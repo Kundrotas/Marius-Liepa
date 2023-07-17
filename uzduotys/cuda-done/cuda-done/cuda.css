@@ -1,0 +1,597 @@
+/* PO PATIKRINIMO NARSYKLEJE - pridedame paprasta reset, 
+kuris nustato plociu apskaiciavimus ir nuima margin 
+nuo body elemento. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* po to kai pradesim stilizuoti meniu. */
+    font-family: 'Titillium Web', sans-serif; /* po to , 
+    kai paimsim nuoroda is google */
+}
+
+body {
+    margin: 0; /* dabar dingsta visi tarpai narsykleje 
+    (parodyti) */
+}
+
+/*  PRADZIA 
+    stiliu rasome nuo paciu placiausiu elementu ir tada 
+    siauriname. Tad galime pradeti nuo site-header, nes 
+    jis placiausias sioje dalyje. Kadangi site header 
+    turi fonine spalva, priskiriame ja nusikopijave jos 
+    koda. TURETI FAILA SU SPALVOM, SRIFTAIS
+*/
+
+.site-header {
+    background-color: #87509c; /* nustatome fono spalva */
+    /* kadangi noresime, kad musu headeris butu prirakintas 
+    prie narsykles virsaus, kad netgi skrolinant zemyn 
+    puslapyje, vistiek matytume headeri virsuje, turime 
+    parasyti tokiam fiksavimui koda. */
+    position: fixed; /* fiksuojame pozicija */
+    width: 100%; /* nurodome kad uzimtu visa ploti */
+    display: block; /* nurodome, kad butu matomas */
+    /* kad headeris yra fiksuotas pamatysime veliau, kai 
+    pridesime daugiau turinio i puslapi ir skrolinsime 
+    zemyn. */
+}
+
+/* patikriname narsykleje koks vaizdas, ir matome kad yra 
+tarpai, kurie atsiranda del defaultinio narsykliu nustatymo. 
+Tuos defaultinius nustatymus panaikiname su CSS Reset. */
+
+/* PO RESET PRIDEJIMO 
+Kaip matome narsykleje musu logotipas ir turinys liecia 
+narsykles krasta nors turetu buti atitraukti. Pagunda butu 
+PSD faile ismatuoti atstuma nuo krasto iki turinio ir 
+prideti margin-left, taciau tai neteisinga, nes tas 
+atstumas kinta priklausomai nuo ekrano plocio. Todel 
+nustatome, kad musu geltonas blokas butu visada 
+centruojamas. 
+PSD FAILE ISSIMATUOJAME to geltono staciakampio ploti - 
+1140px ir rasome:
+*/
+
+.container {
+    max-width: 1140px; /* parodyti - jei desime tik width, 
+    gausis, kad kai maziname ekrano ploti, atsiras 
+    horizontalus skrolas, nes tas fiksuotas plotis 
+    nebetelpa i ekrana. todel darom max-width, kuris 
+    nurodo, kad maksimalus plotis yra 1140, bet jei 
+    ekranas yra siauresnis, tai tiesiog uzims visa esama 
+    ploti. */
+    width: 100%;
+    margin: 0 auto; /* virsus ir apacia 0, o kaire ir 
+    desine automatiskai prisitaiko. Kad sis margin 
+    nustatymas veiktu, privaloma, kad butu nustatytas 
+    koks nors plotis. */
+    padding: 0 20px;
+}
+
+/* daugiau i container klase nieko nerasome, nes 
+noresime ja panaudoti ir kitose puslapio vietose, 
+kadangi ir kitose dalyse reikes centruoti turini. 
+Tad tiesiog issikviesime tose vietose sia klase. 
+Jei reikes kokiu nors modifikaciju kitose dalyse, 
+mes visada galesime priskirti nauja klase i ta pacia 
+vieta. pavyzdziui, musu headeryje matome, kad geltono 
+staciakampio viduje turime du zalius staciakampius 
+viena greta kito. Vadinasi noresime panaudoti flex. 
+Galime susikurti atskira flex klase, kurios paskirtis 
+bus ijungti flex container staciakampiui. */
+
+.flex-container { /* sia klase priskiriame tiems 
+    elementams kur reikia - header atveju, priskiriame 
+    container klasei HTML faile. */
+    display: flex;
+}
+
+/* Pries tvarkant visa musu meniu, turime pirmiausia 
+padaryti taip, kad logotipas lygiuotusi kaireje, o meniu 
+desineje. Kadangi yra ijungtas flex, galime panaudoti 
+justify-content: space-between; klasei container bet 
+privalome nurodyti, kad turime omenyje tik ta container 
+kuris yra .site-header viduje. Taip pat pritaikome 
+align-items:center, kad gautume vertikalu centravima.
+*/
+.site-header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Dabar galime susitvarkyti meniu. Norime pritaikyti 
+flex-container, kad meniu li elementai taptu horizontalus. 
+Kadangi flex galioja tik vaikiniams elementams, 
+flex-container priskiriame teviniam ju elementui - ul. 
+Tad HTML faile prirasome sia klase ul. */
+
+/* Sutvarkome meniu. Norime pasiekti li elementus, tad 
+turime nurodyti kurioje klaseje jie yra: main-nav */
+.main-nav li {
+    list-style: none; /* isjungiame taskelius */
+}
+
+/* srifta, dydi ir spalva turime taikyti ne li, o a 
+zymei, esanciai main-nav viduje. nustatome virsuje failo, 
+srifto dydi: html {font-size: 16px;}, o tada prie a zymes 
+galime rasyti 1 rem; taip pat padarome visas raides 
+didziosiomis ir nuimame pabraukima. */
+
+/* IS PSD FAILO ZINOME, KAD SRIFTAS YRA TITILIUM WEB 
+REGULAR, TAD EINAME I fonts.google.com ir pasiimame 
+nuoroda i si srifta. Mums reikes regular, italic, bold, 
+semibold ir light tad customiziname linka fonts 
+svetaineje. Sia nuoroda prisegame HTML failo head dalyje. 
+Kadangi tai bus musu pagrindinis sriftas galime priskirti 
+ji paciame virsuje html {font-family: 'Titillium Web', 
+sans-serif;} */
+
+/* IS PSD FAILO pasiimame atstumus tarp li elementu. 
+PSD matome kad yra pavaizduotas ir aktyvios nuorodos 
+patamsejimas. Pagal ji issimatuojame ir zinome, kad 
+kaire desine yra po 17px, o virsus ir apacia po 10px. 
+Ismatave atstuma tarp Home ir About matome kad yra 44px, 
+vadinasi dar yra margin 5px (17+17+5+5=44) */
+.main-nav a {
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 10px 17px;
+}
+
+/* IS PSD FAILO, zinome kad aktyvios nuorodos fono 
+atspalvis yra #643a79, tad pridedame hover ir active 
+pseudo selektoriams. taip pritaikome kampu uzapvalinima. */
+.main-nav a:hover, main-nav a:active {
+    background-color: #643a79;
+    border-radius: 5px;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* TIK PO MENIU SUTVARKYMO! 
+PSD FAILE ismatuojame atstuma virs logotipo ir pridedame 
+padding: 
+*/
+.logo {
+    padding: 55px 0;
+}
+
+/* HEADER PABAIGA */
+
+/* HERO */
+/* siam dizainui tai negalioja, bet jei turetume Hero 
+dali kuri turi uzimti visa ekrano auksti kai puslapis 
+uzsikrauna, tuomet turetume rasyti min-height:100vh; 
+vh - viewport height, ir skaicius reiskia procenta. 
+100vh = 100% viewport (ekrano)
+*/
+
+/* sukuriame fonine spalva visam raudonam 
+staciakampiui - section klasei hero ir nurodome kad 
+visas turinys butu centruojamas */
+.hero {
+    background-color: #87509c;
+    text-align: center;
+    padding-top: 100px;
+}
+
+/* pasidarome atitraukimus turinio. matome, kad per 
+visa dizaina, visose dalyse atstumas nuo virsaus ir 
+apacios iki turinio yra po 120px, tad susikuriame 
+tokia taisykle: visi vaikiniai container section 
+dalyje turetu tureti padding: 120px 0; */
+section > .container {
+    padding: 120px 0;
+}
+
+/* is PSD FAILO pasiimame teksto spalva ir srifto dydi. 
+PSD nurodyta kad dydis yra 42px, tad suskaiciuojame 
+koeficienta rem: daliname tiksla is konteksto. 
+42/16=2.625. Taip pat turime paskaiciuoti koeficienta 
+eilutes auksciui. PSD faile nurodyta 48px, 
+daliname 48/42=1.143. line-height rasome tik koeficienta. 
+Galejome nurodyti ir pikseliais, bet tada nebutu toks 
+lankstus kodas - dabar galime tiesiog vienoje vietoje 
+pakeisti srifto dydi, ir atitinkamai keistusi visi sie 
+dydziai remiantis koeficientais. (parodyti keician 
+font-size html zymeje virsuj) */
+.hero h1 {
+    color: #f7f3ea;
+    font-size: 2.625rem;
+    line-height: 1.1428;
+}
+
+.hero a, .contact .btn {
+    font-size: 1.125rem; /* PSD faile 18px, daliname 18/16 */
+    letter-spacing: 0.02em; /* PSD faile 20px, daliname 
+    20/1000 ir matavimo vienetas em*/
+    color: #fff; /* teksto spalva mygtuke */
+    text-transform: uppercase; /* tekstas didziosiomis 
+    raidemis */
+    text-decoration: none; /* nuimame pabraukima */
+    padding: 28px 82px 25px; /* atstumai. apacioje kiek 
+    maziau nes yra uzdetas border */
+    background-color: #eb7d4b; /* fono spalva */
+    border-radius: 5px; /* apvalinti kampai */
+    border-bottom: 4px solid #c86a40; /* patamsinta linija, 
+    spalva is PSD failo */
+    margin-top: 40px; /* atstumas nuo teksto iki mygtuko, 
+    taciau niekas nepasikeicia, nes a zymei margin negalioja. 
+    todel rasome: */
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* HERO PABAIGA */
+
+/* SERVICES */
+.services {
+    background-color: #17c2a4;
+}
+
+/* kadangi visu section daliu heading bus su tuo paciu srifto
+ dydziu, centruoti ir didziosiomis raidemis, galime parasyti 
+ bendrine taisykle, kad nereiketu kartoti kodo. */
+.section-heading {
+    text-align: center; /* galios ir h2 ir p, todel rasome i 
+    section-heading */
+    color: #fff;
+}
+
+.section-heading h2 {
+    font-size: 2.5rem; /* 40px is PSD failo, daliname 40/16 */
+    letter-spacing: 0.1em; /* 100 is PSD failo, daliname 
+    100/1000 */
+    text-transform: uppercase;
+}
+
+.section-heading h2:after { /* pseudo elementas linijai 
+    prideti */
+    content: ""; /* tuscias turinys */
+    display: block; 
+    width: 90px;
+    border-top: 4px solid #14a58c;
+    margin: 22px auto; /* centruojame ir nustatome atstuma 
+    nuo virsaus ir apacios */
+}
+
+.container a, .container p, .container h3 { /* pasikartojantis
+ kodas, kuri galime apsirasyti bendroje taisykleje. Atlikus 
+ tai, perkeliame i virsu po containter klases aprasu ir 
+ pasaliname is hero a css */
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+}
+
+.section-heading p {
+    max-width: 610px; /* nustatome maksimalu ploti */
+    margin: 0 auto; /* centruojame */
+    line-height: 1.625;
+}
+
+/* kad padarytume 4 stulpelius, einame atgal i HTML faila, ir 
+priskiriame flex-container klase service-content div, o 
+tada tesiame toliau: */
+
+.service, .team-member, .skill {
+    text-align:center;
+    color: #fff;
+    max-width: 200px;
+    margin: 80px auto 0;
+}
+
+.service h3, .team-member h3, .skill h3 {
+    font-size: 1.5rem; /* 24px is PSD failo */
+    text-transform: uppercase;
+    font-weight:700;
+}
+
+.section-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* SERVICES PABAIGA */
+
+/* TEAM */
+
+.team {
+    background-color: #e7f1f8;
+}
+
+.team .section-heading {
+    color: #000;
+}
+
+.team .section-heading h2:after {
+    border-color: #c8d9e5;
+}
+
+.team .section-heading p {
+    max-width: 645px;
+}
+
+.team .section-content img {
+    border-radius: 50%;
+    max-width:100%;
+}
+
+.team .section-content h3 {
+    padding-top: 45px;
+    color: #27283d;
+}
+
+.team .section-content span {
+    color: #30bae7;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    display: inline-block;
+}
+
+.team .section-content p {
+    color: #3c4761;
+}
+
+.team .social-nav ul {
+    justify-content: center;
+    margin-top: 20px;
+    list-style: none;
+    padding-left:0;
+}
+
+.team .social-nav a {
+    padding: 5px;
+}
+
+.team .social-nav a i {
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 2rem;
+    width: 2.625rem;
+    height: 2.625rem;
+    color: #fff;
+    background-color: #bed2e0;
+}
+/* TEAM PABAIGA */
+
+/* SKILLS */
+.skills .section-heading {
+    color: #000;
+}
+
+.skills .section-heading h2:after {
+    border-color: #c8d9e5;
+}
+
+.skills .section-heading p {
+    max-width: 645px;
+}
+
+.skills .section-content h3 {
+    padding-top: 45px;
+    color: #27283d;
+}
+/* SKILLS PABAIGA */
+
+/* CONTACT */
+.contact {
+  background-color: #3c5499;
+  color: #fff;
+}
+
+.contact .container {
+    padding-bottom: 60px;
+}
+
+.contact .section-heading h2:after {
+  border-color: #273a71;
+}
+
+.contact .section-heading p {
+  max-width: 780px;
+}
+
+.contact .section-content {
+  width: 80%;
+  max-width: 860px;
+  margin: 80px auto;
+}
+
+.contact .section-content .contact-form .input-row {
+  margin-bottom: 30px;
+}
+
+.contact .section-content .contact-form .input-row input {
+  padding: 20px 25px;
+  border-radius: 5px;
+  border: none;
+  /*apskaiciuojame elemento ploti naudodami calc funkcija*/
+  width: calc(50% - 18px);
+  color: #fff;
+  background-color: #273a71;
+}
+
+/*pakeiciame placeholder teksto spalva*/
+.contact .section-content .contact-form .input-row input::placeholder {
+  color: #fff;
+}
+
+/*pirmam elementui esanciam input-row bloko viduje nustatome 
+atitraukima is desines puses*/
+.contact .section-content .contact-form .input-row input:first-child {
+  margin-right: 16px;
+}
+
+/*paskutiniam elementui esanciam input-row bloko viduje 
+nustatome atitraukima is kaires puses*/
+.contact .section-content .contact-form .input-row input:last-child {
+  margin-left: 16px;
+}
+
+.contact .section-content .contact-form textarea {
+  border: none;
+  /*nurodome kad blokas turi uzimti visa tevinio elemento 
+  ploti*/
+  width: 100%;
+  border-radius: 5px;
+  padding: 25px;
+  color: #fff;
+  background-color: #273a71;
+}
+
+.contact .section-content .contact-form textarea::placeholder {
+  color: #fff;
+}
+
+.contact .section-content .contact-form .btn-form {
+  background-color: #30bae7;
+  border-color: #299ec5;
+  /*nustatome teksto srifta*/
+  font-family: "Titillium Web", sans-serif;
+}
+
+.contact .btn {
+    margin: 60px auto 0;
+    display: block;
+    width: 300px;
+}
+
+/* CONTACT PABAIGA */
+
+/* FOOTER */
+.footer {
+  background-color: #344b8e;
+  padding: 50px 0;
+}
+
+.footer ul {
+  justify-content: space-around;
+    list-style: none;
+}
+
+.footer ul li a {
+  display: block;
+  padding: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.footer ul li a:hover {
+  color: #30bae7;
+}
+
+@media screen and (max-width: 980px) {
+    
+    .main-nav {
+        display: none;
+    }
+    
+    .site-header .container {
+        display: block;
+    }
+    
+    .logo {
+        float: left;
+    }
+    
+    .mobile-nav {
+        position: relative;
+        width: 100%;
+        display: block;
+    }
+    
+    .mobile-nav li {
+        list-style: none;
+    }
+    
+    .mobile-nav ul {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 133px;
+        padding: 20px;
+        background-color: #ffffff;
+    }
+    
+    .mobile-nav a {
+        color: #3c4761;
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin: 0 5px;
+        padding: 10px 17px;
+        display: block;
+    }
+    
+    .mobile-nav a:hover, .mobile-nav a:active {
+        background-color: #643a79;
+        color:#fff;
+        border-radius: 5px;
+    }
+    
+    .mobile-nav a.icon {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        color: #fff;
+    }
+    
+    .services .section-content, .team .section-content, .skills .section-content {
+        flex-direction: column;
+    }
+    
+    .service, .skill, .team-member {
+        max-width: 90%;
+    }
+    
+    .footer ul {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    
+    .footer-nav .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    
+    section > .container {
+        padding: 70px 0;
+    }
+    
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    .hero h1 {
+        font-size: 2.3em;
+    }
+    
+    .section-heading h2 {
+        font-size: 2.2rem;
+    }
+    
+    .team .section-content img {
+        max-width: 80%;
+    }
+}
